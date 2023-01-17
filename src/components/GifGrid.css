@@ -1,5 +1,41 @@
-.card{
-    width: 23rem; 
-    height: 15rem; 
-    background-color: rgb(70, 55, 55);
+.row {
+
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid rgb(189, 164, 0);
+    border-radius: 20px;
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    box-sizing: border-box;
+
+
+}
+
+.customCard {
+
+    margin-top: 2rem;
+    display: inline-flex;
+    width: auto;
+    height: 0%;
+    overflow: hidden;
+    border-radius: 20px;
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+    margin-bottom: 1.5rem
+}
+
+.customCard img {
+    width: 100%;
+    object-fit: cover;
+}
+
+h2 {
+    color: rgb(189, 164, 0);
+    ;
+    font-size: 2rem;
+    font-style: unset;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

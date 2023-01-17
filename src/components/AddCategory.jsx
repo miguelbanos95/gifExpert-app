@@ -6,19 +6,20 @@ const AddCategory = ({onNewCategory}) => {
     const [inputValue, setInputValue] = useState('')
 
     const handleOnChange = (e) => {
-        //importante evaluar el evento
+        //important: evaluate the event!!
         setInputValue(e.target.value)
     }
 
     const handleOfSubmit = (e) => { 
         e.preventDefault();
 
-        //controla la condicion de si entra un inputvalue > o = a 1 no añade nada y salta al siguiente scope
-        if( inputValue.trim().length <=1) return;
+        /* controls the condition of whether an \\inputvalue is greater than or equal to 1, 
+        it does not add anything and jumps to the next scope."*/
+        if( inputValue.trim().length <=1 ) return;
 
         setInputValue('');
 
-        onNewCategory( inputValue.trim() );
+        onNewCategory( inputValue.trim().toUpperCase() );
     }
 
 

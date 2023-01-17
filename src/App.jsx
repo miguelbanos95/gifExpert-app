@@ -4,6 +4,7 @@ import AddCategory from "./components/AddCategory";
 import GifGrid from './components/GifGrid';
 
 
+
 function App() {
   const [categories, setCategories] = useState([])
 
@@ -16,7 +17,7 @@ function App() {
     <div className="App">
 
       {/* title */}
-      <h1>Hola</h1>
+      <h1>GIFindoor 🧙🏻‍♂️</h1>
 
       {/* input */}
       <AddCategory onNewCategory={onAddCategory} />

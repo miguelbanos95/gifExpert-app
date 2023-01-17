@@ -1,47 +1,52 @@
 import React, { useEffect, useState } from 'react'
 
-function GifGrid({ category }) {
+const GifGrid = ({ category }) => {
 
     const [data, setData] = useState({ data: [] });
+    const [loading, setLoading] = useState(true)
     const APY_KEY = 'Y0deAmzag0NmrKxEyN1ZJv3LPZAGEYvh'
 
 
     useEffect(() => {
-
-        if (!category) {
-            return null
-
-        } else {
-            async function fetchData() {
-                const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${APY_KEY}&q=${category}&limit=5&offset=0&rating=g&lang=en`)
-                const json = await response.json();
-                setData(json);
-            }
-            fetchData();
+        async function fetchData() {
+            const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${APY_KEY}&q=${category}&limit=28&offset=0&rating=g&lang=en`)
+            const json = await response.json();
+            setData(json);
         }
+        fetchData();
+        setLoading(false)
+
     }, [])
 
     const images = data.data.map(el => ({
         id: el.id,
         title: el.title,
+        username: el.username,
         url: el.images.downsized_medium.url
     }));
 
     /* const resultArray = [...images];
-     ó ...images ambas son correctas */
+     or '...images' both are corrects */
 
     return (
-        <>
-            <h1 className='mt-3'>{category}</h1>
-            <div className='card'>
-                {...images.map(el => (
-                    <>
-                        <h5 key={el.id}>{el.title}</h5>
-                        <img src={el.url}></img>
-                    </>
-                ))}
-            </div>
-        </>
+        <div>
+            {loading ? (
+                <div>
+
+                </div>
+            ) : (
+                <>
+                    <h2 className='pt-5'>{category}</h2>
+                    <div className='row'>
+                        {...images.map(el => (
+                            <div className='customCard'>
+                                <img key={el.id} src={el.url}></img>
+                            </div>
+                        ))}
+                    </div>
+                </>
+            )}
+        </div>
     )
 }
 

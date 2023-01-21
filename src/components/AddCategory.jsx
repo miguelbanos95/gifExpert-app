@@ -26,7 +26,7 @@ const AddCategory = ({onNewCategory}) => {
     return (
         <form onSubmit={handleOfSubmit}>
             <input type="text"
-                placeholder="search"
+                placeholder="Search all the GIFs"
                 onChange={handleOnChange}
                 value={inputValue}
             />

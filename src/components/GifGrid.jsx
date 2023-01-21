@@ -14,7 +14,11 @@ const GifGrid = ({ category }) => {
             setData(json);
         }
         fetchData();
-        setLoading(false)
+
+        setTimeout(function () {
+            setLoading(false)
+        }, 1000);
+
 
     }, [])
 
@@ -25,22 +29,44 @@ const GifGrid = ({ category }) => {
         url: el.images.downsized_medium.url
     }));
 
+    const handleDelete = (category) => {
+        const filteredCategory = data.filter((el => el.category !== category))
+        setData(filteredCategory)
+
+    }
+
+
+    // const deletedFood = (name) => {
+    //     const filteredFood = displayItems.filter((food) => food.name !== name);
+    //     setDisplayItems(filteredFood);
+    //     setShowFoods(filteredFood);
+    //   }
+
     /* const resultArray = [...images];
      or '...images' both are corrects */
 
     return (
         <div>
             {loading ? (
-                <div>
-
+                <div className="d-flex justify-content-center mt-5">
+                    <div className="spinner-border text-warning" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
                 </div>
             ) : (
                 <>
-                    <h2 className='pt-5'>{category}</h2>
+                    <div className='category'>
+                        <h2 className=''>{category}</h2>
+                        <button className='deleteButton' onClick={handleDelete}>
+                            <i className="fa-solid fa-trash fa-xl"></i>
+                            </button>
+                    </div>
                     <div className='row'>
                         {...images.map(el => (
                             <div className='customCard'>
-                                <img key={el.id} src={el.url}></img>
+                                <div className='imgBox'>
+                                    <img key={el.id} src={el.url}></img>
+                                </div>
                             </div>
                         ))}
                     </div>

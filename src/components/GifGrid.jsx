@@ -57,9 +57,9 @@ const GifGrid = ({ category }) => {
                 <>
                     <div className='category'>
                         <h2 className=''>{category}</h2>
-                        <button className='deleteButton' onClick={handleDelete}>
+                        {/* <button className='deleteButton' onClick={handleDelete}>
                             <i className="fa-solid fa-trash fa-xl"></i>
-                            </button>
+                            </button> */}
                     </div>
                     <div className='row'>
                         {...images.map(el => (
